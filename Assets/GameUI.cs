@@ -11,7 +11,8 @@ public class GameUI : MonoBehaviour
 	public static GameUI instance;
 
 	public TMP_Text pointsText;
-
+	public TMP_Text linesCleared;
+	
 	public CanvasGroup tutorialUI;
 	public CanvasGroup inGameUI;
 	public CanvasGroup gameOverUI;
@@ -61,5 +62,6 @@ public class GameUI : MonoBehaviour
 		}	
 
 		pointsText.text = "Points: " + GameManager.instance.totalPoints;
+		linesCleared.text = "Lines Cleared: " + GameManager.instance.linesCleared;
 	}
 }

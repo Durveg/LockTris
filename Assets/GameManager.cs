@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
 	public int pointsPerTetris = 800;
 
 	public int totalPoints = 0;
+	public int linesCleared = 0;
 
 	private void Start() 
 	{
@@ -28,11 +29,13 @@ public class GameManager : MonoBehaviour
 	public void AddPoints(int multiplier)
 	{
 		totalPoints += multiplier * pointsPerRow;
+		linesCleared += multiplier;
 	}
 
 	public void AddTetris()
 	{
 		totalPoints += pointsPerTetris;
+		linesCleared += 4;
 	}
 
 	public void gameOver()
