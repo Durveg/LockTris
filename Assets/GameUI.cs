@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class GameUI : MonoBehaviour 
 {
+
+	public static GameUI instance;
 
 	public TMP_Text pointsText;
 
@@ -15,11 +18,22 @@ public class GameUI : MonoBehaviour
 
 	void start()
 	{
+		GameUI.instance = this;
+
 		tutorialUI.interactable = true;
 		tutorialUI.alpha = 1;
 		
 		inGameUI.alpha = 0;
 		inGameUI.interactable = false;
+
+		gameOverUI.alpha = 0;
+		gameOverUI.interactable = false;
+	}
+
+	public void GameOver()
+	{
+		gameOverUI.alpha = 1;
+		gameOverUI.interactable = true;
 	}
 
 	public void StartGame()
@@ -31,7 +45,11 @@ public class GameUI : MonoBehaviour
 		inGameUI.interactable = true;
 
 		FindObjectOfType<Spawner>().StartGame();
+	}
 
+	public void Restart()
+	{
+		SceneManager.LoadScene(0);
 	}
 
 	// Update is called once per frame

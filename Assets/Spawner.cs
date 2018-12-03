@@ -8,6 +8,8 @@ public class Spawner : MonoBehaviour {
 
 	public Color[] blockColors;
 
+	public bool gameOver = false;
+
 	private Group nextUp;
 	public GameObject nextUpSlot;
 
@@ -17,11 +19,19 @@ public class Spawner : MonoBehaviour {
 		this.nextPiece();
 	}
 
+	public void GameOver()
+	{
+		gameOver = true;
+	}
+
 	public void nextPiece()
 	{
-		nextUp.transform.position = this.transform.position;
-		nextUp.enablePiece();
-		this.spawnNext();
+		if(gameOver == false)
+		{
+			nextUp.transform.position = this.transform.position;
+			nextUp.enablePiece();
+			this.spawnNext();
+		}
 	}
 
 	private void spawnNext() 

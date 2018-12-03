@@ -27,16 +27,16 @@ public class Block : MonoBehaviour
 
 	public void UnlockPiece()
 	{
-		if(this.pieceLockedValue == 2)
-		{
-			this.pieceLockedValue--;
-			this.spriteRenderer.sprite = singleLockSprite;
-		}
-		else if(this.pieceLockedValue == 1)
-		{
-			this.pieceLockedValue--;
-			this.spriteRenderer.sprite = unlockedSprite;
-		}
+		// if(this.pieceLockedValue == 2)
+		// {
+		// 	this.pieceLockedValue--;
+		// 	this.spriteRenderer.sprite = singleLockSprite;
+		// }
+		// else if(this.pieceLockedValue == 1)
+		// {
+		this.pieceLockedValue = 0;
+		this.spriteRenderer.sprite = unlockedSprite;
+		// }
 	}
 
 	// Use this for initialization

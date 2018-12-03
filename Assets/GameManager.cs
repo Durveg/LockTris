@@ -38,6 +38,8 @@ public class GameManager : MonoBehaviour
 	public void gameOver()
 	{
 		SoundManager.instance.PlayGameOver();
+		FindObjectOfType<Spawner>().GameOver();
+		FindObjectOfType<GameUI>().GameOver();
 		//ToDo: Show GameOverUI.
 	}
 }
