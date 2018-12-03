@@ -108,15 +108,18 @@ public class TetrisGrid : MonoBehaviour {
 			}
 		}
 
-		if(clearedThisloop < 4)
+		if(clearedThisloop > 0)
 		{
-			GameManager.instance.AddPoints(clearedThisloop);
+			SoundManager.instance.PlayClear();
+			if(clearedThisloop < 4)
+			{
+				GameManager.instance.AddPoints(clearedThisloop);
+			}
+			else if (clearedThisloop == 4)
+			{
+				GameManager.instance.AddTetris();
+			}
 		}
-		else if (clearedThisloop == 4)
-		{
-			GameManager.instance.AddTetris();
-		}
-
 		if(firstClear != -1)
 		{
 			decreaseRowsAbove(firstClear + 1);

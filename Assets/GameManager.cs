@@ -34,4 +34,10 @@ public class GameManager : MonoBehaviour
 	{
 		totalPoints += pointsPerTetris;
 	}
+
+	public void gameOver()
+	{
+		SoundManager.instance.PlayGameOver();
+		//ToDo: Show GameOverUI.
+	}
 }

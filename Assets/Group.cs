@@ -47,7 +47,8 @@ public class Group : MonoBehaviour {
 		pieceEnabled = true;
 		if (!isValidGridPos()) {
 			Debug.Log("GAME OVER");
-			Destroy(gameObject);
+			//Destroy(gameObject);
+			GameManager.instance.gameOver();
 		}
 	}
 
@@ -123,6 +124,8 @@ public class Group : MonoBehaviour {
 			// It's not valid. revert.
 			transform.position += new Vector3(0, 1, 0);
 
+			SoundManager.instance.PlayPlaced();
+
 			// Clear filled horizontal lines
 			TetrisGrid.deleteFullRows();
 
@@ -150,6 +153,7 @@ public class Group : MonoBehaviour {
 		// See if valid
 		if (isValidGridPos())
 		{
+			SoundManager.instance.PlayRotate();
 			// It's valid. Update grid.
 			updateGrid();
 			TetrisGrid.LockRandomPiece();

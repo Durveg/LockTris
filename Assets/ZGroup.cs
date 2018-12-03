@@ -25,6 +25,7 @@ public class ZGroup : Group
 			// See if valid
 			if (isValidGridPos())
 			{
+				SoundManager.instance.PlayRotate();
 				// It's valid. Update grid.
 				updateGrid();
 				rotated = true;
@@ -41,6 +42,7 @@ public class ZGroup : Group
 			bool validPos = isValidGridPos();
 			if (validPos == true)
 			{
+				SoundManager.instance.PlayRotate();
 				// It's valid. Update grid.
 				updateGrid();
 				rotated = false;
