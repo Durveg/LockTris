@@ -64,7 +64,7 @@ public class Group : MonoBehaviour
 			return;
 		}
 
-		if(Input.GetKeyDown(KeyCode.RightControl) && this.fallen < 3 && this.pieceHasBeenHeld == false)
+		if((Input.GetKeyDown(KeyCode.RightControl) || Input.GetKeyDown(KeyCode.LeftControl))&& this.fallen < 3 && this.pieceHasBeenHeld == false)
 		{
 			this.pieceHasBeenHeld = true;
 			FindObjectOfType<Spawner>().SwapWithHeld(this);
