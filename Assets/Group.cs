@@ -116,7 +116,7 @@ public class Group : MonoBehaviour {
 			transform.position += new Vector3(0, 1, 0);
 
 			// Clear filled horizontal lines
-			Grid.deleteFullRows();
+			TetrisGrid.deleteFullRows();
 
 			// Spawn next Group
 			FindObjectOfType<Spawner>().nextPiece();
@@ -139,7 +139,7 @@ public class Group : MonoBehaviour {
 		{
 			// It's valid. Update grid.
 			updateGrid();
-			Grid.LockRandomPiece();
+			TetrisGrid.LockRandomPiece();
 		}
 		else
 		{
@@ -150,17 +150,17 @@ public class Group : MonoBehaviour {
 	protected void updateGrid() 
 	{
 		// Remove old children from grid
-		for (int y = 0; y < Grid.height; ++y)
-			for (int x = 0; x < Grid.width; ++x)
-				if (Grid.grid[x, y] != null)
-					if (Grid.grid[x, y].transform.parent == transform)
-						Grid.grid[x, y] = null;
+		for (int y = 0; y < TetrisGrid.height; ++y)
+			for (int x = 0; x < TetrisGrid.width; ++x)
+				if (TetrisGrid.grid[x, y] != null)
+					if (TetrisGrid.grid[x, y].transform.parent == transform)
+						TetrisGrid.grid[x, y] = null;
 
 		// Add new children to grid
 		foreach (Block block in this.blocks) 
 		{
-			Vector2 v = Grid.roundVec2(block.transform.position);
-			Grid.grid[(int)v.x, (int)v.y] = block;
+			Vector2 v = TetrisGrid.roundVec2(block.transform.position);
+			TetrisGrid.grid[(int)v.x, (int)v.y] = block;
 		}        
 	}
 
@@ -169,26 +169,26 @@ public class Group : MonoBehaviour {
 		bool valid = true;  
 		foreach (Transform child in transform) 
 		{
-			Vector2 v = Grid.roundVec2(child.position);
+			Vector2 v = TetrisGrid.roundVec2(child.position);
 
 			// Not inside Border?
-			if (Grid.insideBorder(v) == false)
+			if (TetrisGrid.insideBorder(v) == false)
 			{
 				valid = false;
 				break;
 			}
 
 			// Block in grid cell (and not part of same group)?
-			int width = Grid.grid.GetLength(0);
-			int height = Grid.grid.GetLength(1);
+			int width = TetrisGrid.grid.GetLength(0);
+			int height = TetrisGrid.grid.GetLength(1);
 			int x = (int)v.x;
 			int y = (int)v.y;
 
 			if((width > x) && (height > y))
 			{
-				if (Grid.grid[x,y] != null)
+				if (TetrisGrid.grid[x,y] != null)
 				{
-					if(Grid.grid[(int)v.x, (int)v.y].transform.parent != transform)
+					if(TetrisGrid.grid[(int)v.x, (int)v.y].transform.parent != transform)
 					{
 						valid = false;
 						break;

@@ -28,7 +28,7 @@ public class ZGroup : Group
 				// It's valid. Update grid.
 				updateGrid();
 				rotated = true;
-				Grid.LockRandomPiece();
+				TetrisGrid.LockRandomPiece();
 			}
 			else
 			{
@@ -44,7 +44,7 @@ public class ZGroup : Group
 				// It's valid. Update grid.
 				updateGrid();
 				rotated = false;
-				Grid.LockRandomPiece();
+				TetrisGrid.LockRandomPiece();
 			}
 			else
 			{
