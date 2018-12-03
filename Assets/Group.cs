@@ -54,10 +54,17 @@ public class Group : MonoBehaviour {
 	protected void UpdatePiece()
 	{
 		if(pieceEnabled == false)
+		{
 			return;
+		}
+
+		if(GameManager.instance == null)
+		{
+			return;
+		}
 
 				// Move Left
-		if (Input.GetKey(KeyCode.LeftArrow) && Time.time - lastMove >= 0.1) {
+		if (Input.GetKey(KeyCode.LeftArrow) && Time.time - lastMove >= 0.075) {
 			// Modify position
 			transform.position += new Vector3(-1, 0, 0);
 			
@@ -72,7 +79,7 @@ public class Group : MonoBehaviour {
 			lastMove = Time.time;
 		}
 		// Move Right
-		else if (Input.GetKey(KeyCode.RightArrow) && Time.time - lastMove >= 0.1) {
+		else if (Input.GetKey(KeyCode.RightArrow) && Time.time - lastMove >= 0.075) {
 			// Modify position
 			transform.position += new Vector3(1, 0, 0);
 			
@@ -92,11 +99,11 @@ public class Group : MonoBehaviour {
 			this.rotate();
 		}
 				// Fall
-		else if (Input.GetKey(KeyCode.DownArrow) && Time.time - lastFall >= 0.1)
+		else if (Input.GetKey(KeyCode.DownArrow) && Time.time - lastFall >= 0.075)
 		{
 			fall();
 		}
-		else if(Time.time - lastFall >= 10) 
+		else if(Time.time - lastFall >= GameManager.instance.fallSpeed) 
 		{
 			fall();
 		}
