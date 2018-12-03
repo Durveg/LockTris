@@ -11,7 +11,10 @@ public class Spawner : MonoBehaviour {
 	public bool gameOver = false;
 
 	private Group nextUp;
+	private Group held;
+
 	public GameObject nextUpSlot;
+	public GameObject heldSlot;
 
 	public void StartGame()
 	{
@@ -22,6 +25,30 @@ public class Spawner : MonoBehaviour {
 	public void GameOver()
 	{
 		gameOver = true;
+	}
+
+	public void SwapWithHeld(Group piece)
+	{
+		piece.disablePiece();
+		foreach (Block item in piece.blocks)
+		{
+			Vector2 index = TetrisGrid.roundVec2(item.transform.position);
+			TetrisGrid.removeBlock((int)index.x, (int)index.y);
+		}
+
+		if(held == null)
+		{
+			nextUp.pieceHasBeenHeld = true;
+			this.nextPiece();
+		}
+		else 
+		{
+			held.transform.position = piece.transform.position;
+			held.enablePiece();
+		}
+
+		held = piece;
+		held.transform.position = (Vector2)heldSlot.transform.position + held.nextUpOffset;
 	}
 
 	public void nextPiece()

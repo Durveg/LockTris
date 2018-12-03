@@ -21,6 +21,14 @@ public class TetrisGrid : MonoBehaviour {
             	(int)pos.y >= 0);
 	}
 
+	public static void removeBlock(int x, int y)
+	{
+		if (grid[x, y] != null) 
+		{
+			grid[x, y] = null;
+		}
+	}
+
 	public static void deleteRow(int y) 
 	{
     	for (int x = 0; x < width; ++x) {

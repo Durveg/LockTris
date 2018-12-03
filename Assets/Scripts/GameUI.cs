@@ -17,13 +17,14 @@ public class GameUI : MonoBehaviour
 	public CanvasGroup inGameUI;
 	public CanvasGroup gameOverUI;
 
-	void start()
+	void Start()
 	{
 		GameUI.instance = this;
 
-		tutorialUI.interactable = true;
+
 		tutorialUI.alpha = 1;
-		
+		tutorialUI.interactable = true;
+
 		inGameUI.alpha = 0;
 		inGameUI.interactable = false;
 
@@ -61,7 +62,7 @@ public class GameUI : MonoBehaviour
 			return;
 		}	
 
-		pointsText.text = "Points: " + GameManager.instance.totalPoints;
-		linesCleared.text = "Lines Cleared: " + GameManager.instance.linesCleared;
+		pointsText.text = GameManager.instance.totalPoints.ToString();
+		linesCleared.text = "Lines: " + GameManager.instance.linesCleared;
 	}
 }
