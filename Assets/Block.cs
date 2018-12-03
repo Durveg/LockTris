@@ -5,21 +5,38 @@ using UnityEngine;
 public class Block : MonoBehaviour 
 {
 	public SpriteRenderer spriteRenderer;
-	public bool pieceLocked = false;
+	public Sprite unlockedSprite;
+	public Sprite singleLockSprite;
+	public Sprite doubleLockSprite;
+
+	public int pieceLockedValue = 0;
 
 	public Color spriteColor;
+	public bool placedOnBoard = false;
 
-	public Sprite unlockedSprite;
-	public Sprite lockedSprite;
-
-	public void SetLocked()
+	public void placePieceOnBoard()
 	{
-		pieceLocked = true;
+		placedOnBoard = true;
 	}
 
 	public void LockPiece()
 	{
-		this.spriteRenderer.sprite = lockedSprite;
+		this.pieceLockedValue = 2;
+		this.spriteRenderer.sprite = doubleLockSprite;
+	}
+
+	public void UnlockPiece()
+	{
+		if(this.pieceLockedValue == 2)
+		{
+			this.pieceLockedValue--;
+			this.spriteRenderer.sprite = singleLockSprite;
+		}
+		else if(this.pieceLockedValue == 1)
+		{
+			this.pieceLockedValue--;
+			this.spriteRenderer.sprite = unlockedSprite;
+		}
 	}
 
 	// Use this for initialization

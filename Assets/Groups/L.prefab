@@ -189,9 +189,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 212241795034750744, guid: ef1cfeab0dd2c46409ae4e67a5398393,
     type: 2}
-  pieceLocked: 0
   unlockedSprite: {fileID: 21300000, guid: f46e66012f90641cbb1bfc402f15b59d, type: 3}
-  lockedSprite: {fileID: 21300000, guid: b2a21207da05c492d94c9b3a9c52bb0f, type: 3}
+  singleLockSprite: {fileID: 21300000, guid: 229dd01f146da4ca6a7102b3b15e3978, type: 3}
+  doubleLockSprite: {fileID: 21300000, guid: 628657ec5e1484d2da0931df6e23862b, type: 3}
+  pieceLockedValue: 0
+  spriteColor: {r: 0, g: 0, b: 0, a: 0}
+  placedOnBoard: 0
 --- !u!114 &114707786471913382
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -205,9 +208,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 212241795034750744, guid: ef1cfeab0dd2c46409ae4e67a5398393,
     type: 2}
-  pieceLocked: 0
   unlockedSprite: {fileID: 21300000, guid: f46e66012f90641cbb1bfc402f15b59d, type: 3}
-  lockedSprite: {fileID: 21300000, guid: b2a21207da05c492d94c9b3a9c52bb0f, type: 3}
+  singleLockSprite: {fileID: 21300000, guid: 229dd01f146da4ca6a7102b3b15e3978, type: 3}
+  doubleLockSprite: {fileID: 21300000, guid: 628657ec5e1484d2da0931df6e23862b, type: 3}
+  pieceLockedValue: 0
+  spriteColor: {r: 0, g: 0, b: 0, a: 0}
+  placedOnBoard: 0
 --- !u!114 &114971510322840792
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -221,9 +227,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 212241795034750744, guid: ef1cfeab0dd2c46409ae4e67a5398393,
     type: 2}
-  pieceLocked: 0
   unlockedSprite: {fileID: 21300000, guid: f46e66012f90641cbb1bfc402f15b59d, type: 3}
-  lockedSprite: {fileID: 21300000, guid: b2a21207da05c492d94c9b3a9c52bb0f, type: 3}
+  singleLockSprite: {fileID: 21300000, guid: 229dd01f146da4ca6a7102b3b15e3978, type: 3}
+  doubleLockSprite: {fileID: 21300000, guid: 628657ec5e1484d2da0931df6e23862b, type: 3}
+  pieceLockedValue: 0
+  spriteColor: {r: 0, g: 0, b: 0, a: 0}
+  placedOnBoard: 0
 --- !u!114 &114990693794222348
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -237,9 +246,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 212241795034750744, guid: ef1cfeab0dd2c46409ae4e67a5398393,
     type: 2}
-  pieceLocked: 0
   unlockedSprite: {fileID: 21300000, guid: f46e66012f90641cbb1bfc402f15b59d, type: 3}
-  lockedSprite: {fileID: 21300000, guid: b2a21207da05c492d94c9b3a9c52bb0f, type: 3}
+  singleLockSprite: {fileID: 21300000, guid: 229dd01f146da4ca6a7102b3b15e3978, type: 3}
+  doubleLockSprite: {fileID: 21300000, guid: 628657ec5e1484d2da0931df6e23862b, type: 3}
+  pieceLockedValue: 0
+  spriteColor: {r: 0, g: 0, b: 0, a: 0}
+  placedOnBoard: 0
 --- !u!212 &212010885135424548
 SpriteRenderer:
   m_ObjectHideFlags: 1

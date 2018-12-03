@@ -24,8 +24,15 @@ public class Grid : MonoBehaviour {
 	public static void deleteRow(int y) 
 	{
     	for (int x = 0; x < width; ++x) {
-       		Destroy(grid[x, y].gameObject);
-        	grid[x, y] = null;
+			if(grid[x, y].pieceLockedValue == 0)
+			{
+       			Destroy(grid[x, y].gameObject);
+        		grid[x, y] = null;
+			}
+			else 
+			{
+				grid[x, y].UnlockPiece();
+			}
     	}
 	}
 
@@ -33,12 +40,16 @@ public class Grid : MonoBehaviour {
 	{
 		for (int x = 0; x < width; ++x) {
 			if (grid[x, y] != null) {
-				// Move one towards bottom
-				grid[x, y-1] = grid[x, y];
-				grid[x, y] = null;
 
-				// Update Block position
-				grid[x, y-1].transform.position += new Vector3(0, -1, 0);
+				if(grid[x, y-1] == null)
+				{
+					// Move one towards bottom
+					grid[x, y-1] = grid[x, y];
+					grid[x, y] = null;
+
+					// Update Block position
+					grid[x, y-1].transform.position += new Vector3(0, -1, 0);
+				}
 			}
 		}
 	}
@@ -50,9 +61,12 @@ public class Grid : MonoBehaviour {
 		{
 			for(int x = 0; x < width; x++)
 			{
-				if(grid[x, y] != null && grid[x, y].pieceLocked == true)
+				if(grid[x, y] != null)
 				{
-					lockedPieces.Add(grid[x, y]);
+					if(grid[x, y].pieceLockedValue == 0 && grid[x, y].placedOnBoard == true)
+					{
+						lockedPieces.Add(grid[x, y]);
+					}
 				}
 			}
 		}

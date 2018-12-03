@@ -124,7 +124,7 @@ public class Group : MonoBehaviour {
 			pieceEnabled = false;
 			foreach (Block block in this.blocks) 
 			{
-				block.SetLocked();
+				block.placePieceOnBoard();
 			}
 		}
 
