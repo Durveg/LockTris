@@ -41,7 +41,7 @@ public class TetrisGrid : MonoBehaviour {
 		for (int x = 0; x < width; ++x) {
 			if (grid[x, y] != null) {
 
-				if(grid[x, y-1] == null)
+				if(grid[x, y-1] == null && grid[x, y].pieceLockedValue == 0)
 				{
 					// Move one towards bottom
 					grid[x, y-1] = grid[x, y];
@@ -95,14 +95,31 @@ public class TetrisGrid : MonoBehaviour {
 	}
 	public static void deleteFullRows() 
 	{
+
+		int clearedThisloop = 0;
+		int firstClear = -1;
 		for (int y = 0; y < height; ++y) 
 		{
 			if (isRowFull(y)) 
 			{
 				deleteRow(y);
-				decreaseRowsAbove(y+1);
-				--y;
+				clearedThisloop++;
+				firstClear = y;
 			}
+		}
+
+		if(clearedThisloop < 4)
+		{
+			GameManager.instance.AddPoints(clearedThisloop);
+		}
+		else if (clearedThisloop == 4)
+		{
+			GameManager.instance.AddTetris();
+		}
+
+		if(firstClear != -1)
+		{
+			decreaseRowsAbove(firstClear + 1);
 		}
 	}
 }

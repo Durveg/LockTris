@@ -8,6 +8,11 @@ public class GameManager : MonoBehaviour
 
 	public float fallSpeed = 1;
 
+	public int pointsPerRow = 100;
+	public int pointsPerTetris = 800;
+
+	public int totalPoints = 0;
+
 	private void Start() 
 	{
 		if(GameManager.instance == null)
@@ -18,5 +23,15 @@ public class GameManager : MonoBehaviour
 		{
 			GameObject.Destroy(this.gameObject);
 		}
+	}
+
+	public void AddPoints(int multiplier)
+	{
+		totalPoints += multiplier * pointsPerRow;
+	}
+
+	public void AddTetris()
+	{
+		totalPoints += pointsPerTetris;
 	}
 }

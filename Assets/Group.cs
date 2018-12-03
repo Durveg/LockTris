@@ -7,6 +7,7 @@ public class Group : MonoBehaviour {
 	// Time since last gravity tick
 	float lastFall = 0;
 	float lastMove = 0;
+	float lastPressedDown = 0;
 
 	public Vector2 nextUpOffset;
 	private bool pieceEnabled = false;
@@ -28,11 +29,11 @@ public class Group : MonoBehaviour {
 	{
 		blocks = this.GetComponentsInChildren<Block>();
 
-		Color color = FindObjectOfType<Spawner>().randomColor();
-		foreach (Block block in this.blocks)
-		{
-			block.spriteColor = color;
-		}
+		// Color color = FindObjectOfType<Spawner>().randomColor();
+		// foreach (Block block in this.blocks)
+		// {
+		// 	block.spriteColor = color;
+		// }
 
 		int randomRotate = Random.Range(0, 5);
 		for (int i = 0; i < randomRotate; i++)
@@ -94,22 +95,22 @@ public class Group : MonoBehaviour {
 			lastMove = Time.time;
 		}
 		// Rotate
-		else if (Input.GetKeyDown(KeyCode.UpArrow)) 
+		else if (Input.GetKeyDown(KeyCode.Space)) 
 		{
 			this.rotate();
 		}
 				// Fall
-		else if (Input.GetKey(KeyCode.DownArrow) && Time.time - lastFall >= 0.075)
+		else if (Input.GetKey(KeyCode.DownArrow) && Time.time - lastPressedDown >= 0.075)
 		{
-			fall();
+			fall(true);
 		}
 		else if(Time.time - lastFall >= GameManager.instance.fallSpeed) 
 		{
-			fall();
+			fall(false);
 		}
 	}
 
-	protected virtual void fall()
+	protected virtual void fall(bool pressed)
 	{
 		// Modify position
 		transform.position += new Vector3(0, -1, 0);
@@ -136,6 +137,11 @@ public class Group : MonoBehaviour {
 		}
 
 		lastFall = Time.time;
+		if(pressed)
+		{
+			lastPressedDown = Time.time;
+			lastFall += 0.25f;
+		}
 	}
 
 	public virtual void rotate()

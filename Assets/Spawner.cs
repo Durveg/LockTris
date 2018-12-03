@@ -11,16 +11,10 @@ public class Spawner : MonoBehaviour {
 	private Group nextUp;
 	public GameObject nextUpSlot;
 
-	// Use this for initialization
-	void Start () 
+	public void StartGame()
 	{
-		spawnNext();
+		this.spawnNext();
 		this.nextPiece();
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
 	}
 
 	public void nextPiece()
@@ -41,9 +35,9 @@ public class Spawner : MonoBehaviour {
 		nextUp.transform.position = (Vector2)nextUpSlot.transform.position + nextUp.nextUpOffset;
 	}
 
-	public Color randomColor()
-	{
-		int colorIndex = Random.Range(0, this.blockColors.Length);
-		return this.blockColors[colorIndex];
-	}
+	// public Color randomColor()
+	// {
+	// 	int colorIndex = Random.Range(0, this.blockColors.Length);
+	// 	return this.blockColors[colorIndex];
+	// }
 }
